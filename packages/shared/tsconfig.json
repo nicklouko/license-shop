@@ -3,10 +3,7 @@
   "compilerOptions": {
     "module": "CommonJS",
     "outDir": "dist",
-    "rootDir": "src",
-    "paths": {
-      "@license-shop/shared": ["../shared/src/index.ts"]
-    }
+    "rootDir": "src"
   },
   "include": ["src"]
 }
