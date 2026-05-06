@@ -7,12 +7,14 @@
   },
   "dependencies": {
     "@license-shop/shared": "*",
+    "@prisma/client": "^7.8.0",
     "express": "^5.2.1"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
     "@types/node": "^25.6.0",
     "nodemon": "^3.1.14",
+    "prisma": "^7.8.0",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0"
   }

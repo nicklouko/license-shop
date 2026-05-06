@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  orders    Order[]
+}
+
+model Product {
+  id          String    @id @default(cuid())
+  name        String
+  description String
+  price       Int
+  createdAt   DateTime  @default(now())
+  licenses    License[]
+  orders      Order[]
+}
+
+model License {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  productId String
+  product   Product  @relation(fields: [productId], references: [id])
+  orderId   String   @unique
+  order     Order    @relation(fields: [orderId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model Order {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  productId String
+  product   Product  @relation(fields: [productId], references: [id])
+  total     Int
+  status    String   @default("pending")
+  createdAt DateTime @default(now())
+  license   License?
+}
