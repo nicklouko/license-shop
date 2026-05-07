@@ -1,1 +1,5 @@
-﻿{ "name": "@license-shop/shared", "version": "1.0.0", "private": true }
+﻿{
+  "name": "@license-shop/shared",
+  "version": "1.0.0",
+  "private": true
+}
