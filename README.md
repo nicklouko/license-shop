@@ -1,7 +1,7 @@
 (In development)
 
 Tech Stack:
--React
--Node.js(Express)
--Tailwind
--Prisma
+- React
+- Node.js(Express)
+- Tailwind
+- Prisma
