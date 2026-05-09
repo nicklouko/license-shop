@@ -18,19 +18,18 @@ export default function ProductPage() {
   }, []);
 
   return (
-    <div>
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
       {error && <p>{error}</p>}
-      <ul>
-        {data.map((product) => (
-          <li key={product.id}>
-            <Link to={`/products/${product.id}`}>
-              <p>{product.name}</p>
-              <p>{product.description}</p>
-              <p>{(product.price / 100).toFixed(2)}</p>
-            </Link>
-          </li>
-        ))}
-      </ul>
+
+      {data.map((product) => (
+        <div key={product.id} className="bg-white rounded-lg shadow-sky-700 shadow-xs p-4">
+          <Link to={`/products/${product.id}`}>
+            <p>{product.name}</p>
+            <p>{product.description}</p>
+            <p>{(product.price / 100).toFixed(2)}</p>
+          </Link>
+        </div>
+      ))}
     </div>
   );
 }
