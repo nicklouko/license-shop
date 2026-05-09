@@ -23,6 +23,10 @@ export default function ProductsDetailPage() {
   }, []);
 
   async function handleBuy() {
+    /*if (!token) {
+      navigate('/login');
+      return;
+    }*/
     const res = await fetch('http://localhost:3000/orders', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },

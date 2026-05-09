@@ -21,6 +21,7 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
     setToken(null);
   }
 
+  // !!token = true if token is valid, false if null. Used liked this because isAuthenticated is boolean and token is of type string or null.
   return (
     <AuthContext.Provider value={{ token, isAuthenticated: !!token, login, logout }}>
       {children}
