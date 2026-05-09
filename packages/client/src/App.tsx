@@ -4,6 +4,8 @@ import { Routes, BrowserRouter, Route } from 'react-router-dom';
 import './App.css';
 import AuthProvider from './context/authContext';
 import ProductPage from './pages/ProductsPage';
+import ProductsDetailPage from './pages/ProductDetailPage';
+import DashboardPage from './pages/DashboardPage';
 
 function App() {
   return (
@@ -13,8 +15,8 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/products" element={<ProductPage />} />
-          <Route path="/products/:id" element={<div>Product Detail</div>} />
-          <Route path="/dashboard" element={<div>Dashboard</div>} />
+          <Route path="/products/:id" element={<ProductsDetailPage />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>

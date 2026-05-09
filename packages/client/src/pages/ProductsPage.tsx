@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 interface Product {
   id: string;
@@ -8,7 +9,7 @@ interface Product {
 }
 export default function ProductPage() {
   const [data, setData] = useState<Product[]>([]);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
   useEffect(() => {
     fetch('http://localhost:3000/products')
       .then((res) => res.json())
@@ -22,9 +23,11 @@ export default function ProductPage() {
       <ul>
         {data.map((product) => (
           <li key={product.id}>
-            <p>{product.name}</p>
-            <p>{product.description}</p>
-            <p>{(product.price / 100).toFixed(2)}</p>
+            <Link to={`/products/${product.id}`}>
+              <p>{product.name}</p>
+              <p>{product.description}</p>
+              <p>{(product.price / 100).toFixed(2)}</p>
+            </Link>
           </li>
         ))}
       </ul>
