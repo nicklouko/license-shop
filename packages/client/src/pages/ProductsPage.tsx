@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ListingLayout from '../layouts/ListingPages';
+import { API_URL } from '../lib/config';
+import Loading from '../layouts/Loading';
 
 interface Product {
   id: string;
@@ -11,12 +13,16 @@ interface Product {
 export default function ProductPage() {
   const [data, setData] = useState<Product[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch('http://localhost:3000/products')
+    fetch(`${API_URL}/products`)
       .then((res) => res.json())
       .then((data) => setData(data.products))
-      .catch((err) => setError(err));
+      .catch((err) => setError(err))
+      .finally(() => setLoading(false));
   }, []);
+
+  if (loading) return <Loading />;
 
   return (
     <ListingLayout error={error} title="Products">

@@ -3,6 +3,7 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '../context/authContext';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { API_URL } from '../lib/config';
 
 interface Inputs {
   email: string;
@@ -22,7 +23,19 @@ export default function LoginPage() {
   }
 
   async function handleSubmit() {
-    const res = await fetch('http://localhost:3000/auth/login', {
+    if (!inputs.email || !inputs.password) {
+      setError('Please fill in all fields');
+      return;
+    }
+    if (!inputs.email.includes('@')) {
+      setError('Please enter a valid email');
+      return;
+    }
+    if (inputs.password.length < 6) {
+      setError('Password must be at least 6 characters');
+      return;
+    }
+    const res = await fetch(`${API_URL}/auth/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(inputs),
