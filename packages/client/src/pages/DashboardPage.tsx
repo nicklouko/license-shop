@@ -1,11 +1,13 @@
 import { useEffect, useState, useContext } from 'react';
 import { AuthContext } from '../context/authContext';
+import ListingLayout from '../layouts/ListingPages';
 
 interface Order {
   id: string;
   productId: string;
   status: string;
   total: number;
+  product: { name: string };
 }
 export default function DashboardPage() {
   const [orders, setOrders] = useState<Order[]>([]);
@@ -21,14 +23,24 @@ export default function DashboardPage() {
   }, []);
 
   return (
-    <div>
+    <ListingLayout title="Orders">
       {orders.map((o) => (
-        <div key={o.id}>
-          <p>{o.productId}</p>
-          <p>{o.status}</p>
-          <p>{(o.total / 100).toFixed(2)}$</p>
+        <div
+          className="flex flex-col justify-between h-38  border border-b-purple-500 rounded-2xl p-4 shadow-xs shadow-purple-500"
+          key={o.id}
+        >
+          <div>
+            <p className="font-semibold">{o.product.name}</p>
+            <p className="italic text-gray-500">Order Id: {o.id}</p>
+          </div>
+          <div className="flex">
+            <p className="max-w-20 w-full border rounded-4xl  text-sm flex justify-center bg-amber-400 text-gray-500">
+              {o.status}
+            </p>
+            <p className="ml-auto italic">{(o.total / 100).toFixed(2)}$</p>
+          </div>
         </div>
       ))}
-    </div>
+    </ListingLayout>
   );
 }

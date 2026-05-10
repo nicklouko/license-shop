@@ -75,7 +75,7 @@ export default function RegisterPage() {
         {error && <p className="text-red-500">{error}</p>}
         <p className="font-light text-sm mt-5">
           Already have an account?{' '}
-          <Link className="text-blue-500 underline" to="/register">
+          <Link className="text-blue-500 underline" to="/login">
             Login here
           </Link>
         </p>
