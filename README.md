@@ -144,6 +144,7 @@ VITE_API_URL=http://localhost:3000
 
 ```bash
 cd packages/server
+npx prisma generate
 npx prisma migrate dev
 npm run seed
 cd ../..
