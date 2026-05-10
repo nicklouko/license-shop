@@ -33,6 +33,9 @@ export async function getMyOrders(req: AuthRequest, res: Response) {
     return;
   }
 
-  const orders = await prisma.order.findMany({ where: { userId } });
+  const orders = await prisma.order.findMany({
+    where: { userId },
+    include: { product: { select: { name: true } } },
+  });
   res.status(200).json({ orders });
 }
