@@ -3,13 +3,8 @@ import { Link } from 'react-router-dom';
 import ListingLayout from '../layouts/ListingPages';
 import { API_URL } from '../lib/config';
 import Loading from '../layouts/Loading';
+import type { Product } from '@license-shop/shared';
 
-interface Product {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-}
 export default function ProductPage() {
   const [data, setData] = useState<Product[]>([]);
   const [error, setError] = useState<string | null>(null);

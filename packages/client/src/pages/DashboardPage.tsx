@@ -3,14 +3,8 @@ import { AuthContext } from '../context/authContext';
 import ListingLayout from '../layouts/ListingPages';
 import { API_URL } from '../lib/config';
 import Loading from '../layouts/Loading';
+import type { Order } from '@license-shop/shared';
 
-interface Order {
-  id: string;
-  productId: string;
-  status: string;
-  total: number;
-  product: { name: string };
-}
 export default function DashboardPage() {
   const [orders, setOrders] = useState<Order[]>([]);
   const { token } = useContext(AuthContext)!;
@@ -38,8 +32,9 @@ export default function DashboardPage() {
           key={o.id}
         >
           <div>
-            <p className="font-semibold">{o.product.name}</p>
+            <p className="font-semibold">{o.product!.name}</p>
             <p className="italic text-gray-500">Order Id: {o.id}</p>
+            {o.license && <p className="font-mono text-sm">Key: {o.license.key}</p>}
           </div>
           <div className="flex">
             <p

@@ -4,20 +4,28 @@ export interface User {
   createdAt: Date;
 }
 
+export interface Product {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  createdAt: Date;
+}
 export interface License {
   id: string;
   key: string;
-  productName: string;
-  price: number;
-  expiresAt: Date | null;
-  userId: string;
+  productId: string;
+  orderId: string;
+  createdAt: Date;
 }
 
 export interface Order {
   id: string;
   userId: string;
-  licenseId: string;
+  productId: string;
   total: number;
-  status: 'pending' | 'completed' | 'refunded';
+  status: string;
   createdAt: Date;
+  product?: Product;
+  license?: License;
 }

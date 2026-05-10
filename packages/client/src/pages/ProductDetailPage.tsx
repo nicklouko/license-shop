@@ -4,13 +4,7 @@ import { AuthContext } from '../context/authContext';
 import ProductDetailCard from '../components/productDetailCard';
 import { API_URL } from '../lib/config';
 import Loading from '../layouts/Loading';
-
-interface Product {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-}
+import type { Product } from '@license-shop/shared';
 
 export default function ProductsDetailPage() {
   const { id } = useParams();
